@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
 API Blueprint .
+
+entry point for the Flask application.
 """
 from flask import Blueprint
 from api.v1.views.index import *
