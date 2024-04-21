@@ -2,7 +2,7 @@
 """
 creating the Flask web application.
 """
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 import os
@@ -18,6 +18,15 @@ def close_storage(exception=None):
     Closes the storage.
     """
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(e):
+    """
+    Handle 404 error
+    """
+    err_jsn = {"error": "Not found"}
+    return jsonify(err_jsn), 404
 
 
 if __name__ == '__main__':
