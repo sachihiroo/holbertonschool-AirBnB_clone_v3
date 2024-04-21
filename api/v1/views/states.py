@@ -52,7 +52,7 @@ def create_state():
         return abort(400, "Missing name")
     newstate = State(**JSON_data)
     storage.save()
-    return jsonify(newstate.JSON_data()), 201
+    return jsonify(newstate.to_dict()), 201
 
 
 @app_views.route("/states/<state_id>", methods=["PUT"], strict_slashes=False)
